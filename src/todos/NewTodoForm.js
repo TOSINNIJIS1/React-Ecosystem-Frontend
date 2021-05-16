@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import './NewTodoForm.css';
 
 // this is for mapDispatchToProps
-import { createTodo } from '../Redux/actions'
+import { addTodoRequest } from '../Redux/Thunk/thunks'
 
 
 function NewTodoForm({ todos, onCreatePressed }) {
@@ -64,7 +64,7 @@ const mapStateToProps = (state) => ({
 // Dispatch is a function that allow our components to trigger actions that our redux store will respond to.
 // in our case, we want to trigger our redux action when someone clicks the create to do button o
 const mapDispatchToProps = (dispatch) => ({
-    onCreatePressed: text => dispatch(createTodo(text)),
+    onCreatePressed: text => dispatch(addTodoRequest(text)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTodoForm);
