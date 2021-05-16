@@ -5,7 +5,8 @@ import './TodoList.css';
 // for mapDispatchToProps
 import { connect } from 'react-redux';
 import { displayAlert, loadTodos, removeTodoRequest, markTodoAsCompletedRequest } from '../Redux/Thunk/thunks';
-
+// Selectors
+import { getTodos, getTodosLoading } from '../Redux/Selector/selectors';
 
 
 // we need to connect our todo list to the redux store
@@ -31,8 +32,8 @@ function TodoList({ todos = [] , onRemovePressed, onCompletedPressed, isLoading,
 }
 
 const mapStateToProps = (state) => ({
-    isLoading: state.isLoading,
-    todos: state.todos,
+    isLoading: getTodosLoading(state),
+    todos: getTodos(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({

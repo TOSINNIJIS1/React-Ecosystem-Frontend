@@ -10,6 +10,10 @@ import './NewTodoForm.css';
 // this is for mapDispatchToProps
 import { addTodoRequest } from '../Redux/Thunk/thunks'
 
+// this is for mapStateToProps
+// Selectors
+import { getTodos } from '../Redux/Selector/selectors';
+
 
 function NewTodoForm({ todos, onCreatePressed }) {
     
@@ -54,7 +58,7 @@ function NewTodoForm({ todos, onCreatePressed }) {
 // The job of mapStateToProps is to take the state object and return another object containing the
 // pieces of that state that our component needs to access to
 const mapStateToProps = (state) => ({
-    todos: state.todos,
+    todos: getTodos(state),
 });
 
 
