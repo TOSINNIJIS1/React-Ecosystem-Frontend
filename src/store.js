@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { todos, isLoading } from './Redux/reducers';
+import { todos } from './Redux/reducers';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -13,7 +13,6 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 
 const reducers = {
     todos,
-    isLoading,
 };
 
 // tells redux persist how to save and where to store our application data
