@@ -1,12 +1,19 @@
-import { loadTodosInProgress, loadTodosSuccess, loadTodosFailure, createTodo, removeTodo, markTodoAsCompleted } from '../actions';
+import { 
+    loadTodosInProgress, 
+    loadTodosSuccess, 
+    loadTodosFailure, 
+    createTodo, 
+    removeTodo, 
+    markTodoAsCompleted 
+} from '../actions';
 
 //  in Redux, a thunk is simply a function that returns another function, 
 // which contains the actual logic that we want to perform when it's triggered.
 
-export const loadTodos = () => async (dispatch, getState) => {
+export const loadTodos = () => async (dispatch) => {
     try {    
         dispatch(loadTodosInProgress());
-        const response = await fetch('http://localhost:8080/todos-delay')
+        const response = await fetch('http://localhost:8080/todos')
         const todos = await response.json();
 
         dispatch(loadTodosSuccess(todos))
