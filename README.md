@@ -161,3 +161,8 @@
 <!-- It allow us to define styles inside our j -->
 <!-- It allow us to define our own UI components that we can pass props to -->
 <!--  -->
+
+# Testing
+# npm install --save-dev mocha chai
+# npm install --save-dev @babel/register
+<!-- this is so that our test can run modern babel code -->
