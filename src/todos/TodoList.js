@@ -4,13 +4,23 @@ import NewTodoForm from './NewTodoForm';
 import './TodoList.css';
 // for mapDispatchToProps
 import { connect } from 'react-redux';
-import { displayAlert, loadTodos, removeTodoRequest, markTodoAsCompletedRequest } from '../Redux/Thunk/thunks';
+import { 
+    displayAlert, 
+    loadTodos, 
+    removeTodoRequest, 
+    markTodoAsCompletedRequest 
+} from '../Redux/Thunk/thunks';
 // Selectors
-import { getTodos, getTodosLoading } from '../Redux/Selector/selectors';
+import { 
+    getTodos, 
+    getTodosLoading,
+    getCompletedTodos,
+    getIncompleteTodos, 
+} from '../Redux/Selector/selectors';
 
 
 // we need to connect our todo list to the redux store
-function TodoList({ todos = [] , onRemovePressed, onCompletedPressed, isLoading, startLoadingTodos}) {
+function TodoList({ completedTodos, incompleteTodos, onRemovePressed, onCompletedPressed, isLoading, startLoadingTodos}) {
     useEffect(() => {
         startLoadingTodos();
     },[])
@@ -19,12 +29,19 @@ function TodoList({ todos = [] , onRemovePressed, onCompletedPressed, isLoading,
     const content = (
         <div className="list-wrapper">
             <NewTodoForm />
-            {todos.map((todo) => 
+            <h3> Incomplete: </h3>
+            {incompleteTodos.map((todo) => 
                 <TodoListItem 
                     todo={todo} 
                     onRemovePressed={onRemovePressed} 
-                    onCompletedPressed={onCompletedPressed} 
-                />)}
+                    onCompletedPressed={onCompletedPressed} />)}
+            <h3> Completed </h3>
+            {completedTodos.map((todo) => 
+                <TodoListItem 
+                    todo={todo} 
+                    onRemovePressed={onRemovePressed} 
+                    onCompletedPressed={onCompletedPressed} />)}
+
         </div>
     )
 
@@ -33,7 +50,8 @@ function TodoList({ todos = [] , onRemovePressed, onCompletedPressed, isLoading,
 
 const mapStateToProps = (state) => ({
     isLoading: getTodosLoading(state),
-    todos: getTodos(state),
+    completedTodos: getCompletedTodos(state),
+    incompleteTodos: getIncompleteTodos(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
