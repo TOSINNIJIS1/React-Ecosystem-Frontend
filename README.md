@@ -1,3 +1,5 @@
+# Instructed and Directed by Shaun Wassell
+
 # npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/preset-react
 # @babel/preset-env ==> handle the transformation of es6
 # @babel/preset-react ==> handle jsx properly
@@ -147,3 +149,15 @@
 #                                  Data
 
 <!-- We should strive to keep our components as focused as possible on their purpose, taking data and rendering it. And here's where Thunks come in. Remember in previous videos when we defined Redux actions that Redux actions are just objects that contain a type property and perhaps some other data in the actions payload. When we dispatch a Redux action, Redux calls a our reducers with this action and the reducers determine what the state should look like afterward. So what a Thunk is, is when instead of dispatching a Redux action, which is, again, just a JavaScript object, we pass a function to dispatch and this function is where we put whatever async operations we want to perform, such as loading data. And we can also dispatch other actions or even other Thunks from inside this function. We'll see just how to do this in a later video. So then, as I said before, Thunks basically add a fork to our basic unidirectional dataflow. Instead of dispatching only bare Redux actions, our components can also dispatch Thunks, which perform asynchronous operations and can dispatch their own actions or Thunks. And the point of all of this is that it allows us to almost completely remove our side-effect logic from our components, thus increasing our separation of concerns. -->
+
+# Seperation of Concern
+<!-- Reducers is managing the state -->
+<!-- Thunks is managing our side effects logic -->
+<!-- Selectors so that our component to know how our state is set up or contain any logic for transforming the data we get from the state -->
+
+
+# Styled components are what we referred to as CSS and JavaScript
+# npm install styled-components
+<!-- It allow us to define styles inside our j -->
+<!-- It allow us to define our own UI components that we can pass props to -->
+<!--  -->

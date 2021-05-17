@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 // The argument we pass to the second paremeter/parethesis is the component that we want to connect to the redux store
 // for example connect()(NewTodoForm) it return the connected version of the component
 // so instead of exporting NewTodoForm, we will be exporting the connect that we defined
-import './NewTodoForm.css';
 
 // this is for mapDispatchToProps
 import { addTodoRequest } from '../Redux/Thunk/thunks'
@@ -14,22 +13,52 @@ import { addTodoRequest } from '../Redux/Thunk/thunks'
 // Selectors
 import { getTodos } from '../Redux/Selector/selectors';
 
+// Styling 
+import styled from 'styled-components';
+
+const FormContainer = styled.div`
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 8px grey;
+`;
+const FormInput = styled.input`
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    border-radius: 8px;
+    width: 70%;
+    outline: none;
+`;
+
+const FormButton = styled.button`
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    margin-left: 8px;
+    width: 20%;
+    background-color: #22ee22;
+`;
+
 
 function NewTodoForm({ todos, onCreatePressed }) {
     
     const [inputValue, setInputValue] = useState('')
 
     return (
-        <div className='new-todo-form'>
-            <input className='new-todo-input' 
+        <FormContainer>
+            <FormInput
             type='text' 
             placeholder="Type your new todo here"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             />
             
-            <button 
-            className='new-todo-button'
+            <FormButton
             onClick={() => {
                 // check if there's already a todo that contains this text
                 const isDuplicateText = todos.some(todo => todo.text === inputValue)
@@ -44,8 +73,8 @@ function NewTodoForm({ todos, onCreatePressed }) {
             }}
             > 
             Create Todo 
-            </button>
-        </div>
+            </FormButton>
+        </FormContainer>
     )
 }
 

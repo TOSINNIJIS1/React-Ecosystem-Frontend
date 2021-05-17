@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import TodoListItem from './TodoListItem';
 import NewTodoForm from './NewTodoForm';
-import './TodoList.css';
+
 // for mapDispatchToProps
 import { connect } from 'react-redux';
 import { 
@@ -12,12 +12,18 @@ import {
 } from '../Redux/Thunk/thunks';
 // Selectors
 import { 
-    getTodos, 
     getTodosLoading,
     getCompletedTodos,
     getIncompleteTodos, 
 } from '../Redux/Selector/selectors';
+// Styling 
+import styled from 'styled-components'
 
+
+const ListWrapper = styled.div`
+    max-width: 700px;
+    margin: auto;
+`
 
 // we need to connect our todo list to the redux store
 function TodoList({ completedTodos, incompleteTodos, onRemovePressed, onCompletedPressed, isLoading, startLoadingTodos}) {
@@ -27,7 +33,7 @@ function TodoList({ completedTodos, incompleteTodos, onRemovePressed, onComplete
 
     const loadingMessage = <div> Loading todos ... </div>;
     const content = (
-        <div className="list-wrapper">
+        <ListWrapper>
             <NewTodoForm />
             <h3> Incomplete: </h3>
             {incompleteTodos.map((todo) => 
@@ -42,7 +48,7 @@ function TodoList({ completedTodos, incompleteTodos, onRemovePressed, onComplete
                     onRemovePressed={onRemovePressed} 
                     onCompletedPressed={onCompletedPressed} />)}
 
-        </div>
+        </ListWrapper>
     )
 
     return isLoading ? loadingMessage : content;
