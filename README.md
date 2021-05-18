@@ -1,24 +1,27 @@
 # Instructed and Directed by Shaun Wassell
 
-# npm install --save-dev @babel/core @babel/cli @babel/preset-env @babel/preset-react
-# @babel/preset-env ==> handle the transformation of es6
+# npm install --save-dev @babel/core @babel/cli #@babel/preset-env @babel/preset-react
+# @babel/preset-env ==> handle the transformation #of es6
 # @babel/preset-react ==> handle jsx properly
 
 # npm install react react-dom
-# npm install redux-thunk redux-devtools-extension @babel/runtime
+# npm install redux-thunk redux-devtools-extension #@babel/runtime
 <!-- This is the development version of the Babel runtime package we just installed -->
-# npm install --save-dev @babel/plugin-transform-runtime 
+# npm install --save-dev @babel/#plugin-transform-runtime 
 <!-- Web Pack -->
-# npm install --save-dev webpack@4.32.2 webpack-cli@3.3.2 webpack-dev-server@3.5.1 style-loader css-loader babel-loader
+# npm install --save-dev webpack@4.32.2 #webpack-cli@3.3.2 webpack-dev-server@3.5.1 style-loader 
+# css-loader babel-loader
 
 # Redux Store ==> stores any data
 # Redux Actions => JSON objects consisting of action type and payload.
 <!-- explicitly define the different event that can occur in our application for example you want to sign out === "LOG_OUT_USER -->
-# Redux Reducers => Redux way of specifying what should happen to our Redux store or our central state when a given action occurs
+# Redux Reducers => Redux way of specifying what should happen to our Redux store or our central state when a 
+# given action occurs
 <!-- for example when your have "LOG_OUT_USER" action, you logout the user [...] Action ===> Reducer ===> Result --> 
 
 # Note
-# Components can only interact with the state by triggering Redux actions ==> This means the only changes that are allowed to take place in our appliction are the changes that we specify in our Reducers.
+# Components can only interact with the state by triggering Redux actions ==> This means the only changes that 
+# are allowed to take place in our appliction are the changes that we specify in our Reducers.
 # Unidirectional Data Flow ==> UI Trigger Action --> State is updated ---> Component See Updated State
 
 # npm install redux react-redux
@@ -35,7 +38,8 @@
 -->
 
 <!-- 2. You should never trigger any other actions inside your reducers or perform any kind of asynchronous operations such as fetching data from the network -->
-# Reducers are specifically meant to take the current state of the redux store and combine it with action to get the updated state
+# Reducers are specifically meant to take the current state of the redux store and combine it with action to 
+# get the updated state
 
 <!-- 3. Think carefully before connecting components, because connecting a component, in practice, can make it less reusable -->
 <!-- For example: our redux application is todos ===> TodoList, if we need to check the complete and the incomplete we need a container to split. which will be like this todos ===> container ===> TodoList(complete)
